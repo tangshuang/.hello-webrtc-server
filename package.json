@@ -1,0 +1,35 @@
+{
+  "name": "hello-webrtc-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/hello-webrtc-server.js",
+  "scripts": {
+    "start": "node demo/server.js",
+    "build": "babel src/hello-webrtc-server.js -o dist/hello-webrtc-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tangshuang/hello-webrtc-server.git"
+  },
+  "keywords": [
+    "webrtc"
+  ],
+  "author": "tangshuang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tangshuang/hello-webrtc-server/issues"
+  },
+  "homepage": "https://github.com/tangshuang/hello-webrtc-server#readme",
+  "dependencies": {
+    "hello-events": "^2.1.1",
+    "level": "^4.0.0",
+    "query-string": "^6.1.0",
+    "ws": "^6.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0"
+  }
+}
