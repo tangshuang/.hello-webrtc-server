@@ -20,7 +20,8 @@ export default class HelloWebRTCServer extends HelloEvents {
       let token = params.token
 
       if (!token) {
-        throw new Error(`[HelloWebRTC Signaling Server:] token not exists.`)
+        this.debug('token not exists.')
+        return
       }
 
       let currentUser = await this.get(`token:${token}.user`)
@@ -34,17 +35,14 @@ export default class HelloWebRTCServer extends HelloEvents {
         this.connections = this.connections.filter((item) => {
           if (item.user === currentUser && item.socket.readyState === 1) {
             item.socket.dispatch(item.signature, 'offline', null)
-            item.socket.close()
             return false
           }
           else if (item.from === currentUser && item.socket.readyState === 1) {
             item.socket.dispatch(item.signature, 'break', null)
-            item.socket.close()
             return false
           }
           else if (item.to === currentUser && item.socket.readyState === 1) {
             item.socket.dispatch(item.signature, 'break', null)
-            item.socket.close()
             return false
           }
           return true
