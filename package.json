@@ -1,11 +1,11 @@
 {
   "name": "hello-webrtc-server",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/hello-webrtc-server.js",
   "scripts": {
     "start": "node demo/server.js",
-    "build": "babel src/hello-webrtc-server.js -o dist/hello-webrtc-server.js"
+    "build": "node build.js"
   },
   "repository": {
     "type": "git",
@@ -28,8 +28,12 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-async-to-promises": "^1.0.5",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0"
+    "babel-register": "^6.26.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-bufferify": "^1.0.0"
   }
 }

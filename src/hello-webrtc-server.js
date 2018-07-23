@@ -3,14 +3,13 @@ import LevelDB from 'level'
 import URL from 'url'
 import QueryString from 'query-string'
 import HelloEvents from 'hello-events'
-import { disconnect } from 'cluster';
 
 export default class HelloWebRTCServer extends HelloEvents {
   constructor(options, callback) {
     super()
 
     this.server = new WebSocket.Server(Object.assign({ port: 8686 }, options), callback)
-    this.db = LevelDB('./hello-webrtc.db')
+    this.db = LevelDB(options.db ? options.db : __dirname + '/hello-webrtc.db')
 
     this.connections = []
 
@@ -186,11 +185,6 @@ export default class HelloWebRTCServer extends HelloEvents {
     await this.db.del(key)
   }
   async getUser(token) {
-    // throw new Error('[HelloWebRTC Signaling Server:] You should override `getUser` method')
-    return await Promise.resolve(token) // for test
+    return await Promise.resolve(token)
   }
-}
-
-if (typeof module !== 'undefined') {
-  module.exports = HelloWebRTCServer
 }
