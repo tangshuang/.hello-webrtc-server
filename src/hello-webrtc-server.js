@@ -21,7 +21,8 @@ export default class HelloWebRTCServer extends HelloEvents {
       let token = params.token
 
       if (!token) {
-        throw new Error(`[HelloWebRTC Signaling Server:] token not exists.`)
+        this.debug('token not exists.')
+        return
       }
 
       let currentUser = await this.get(`token:${token}.user`)
