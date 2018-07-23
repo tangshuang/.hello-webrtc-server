@@ -36,17 +36,14 @@ export default class HelloWebRTCServer extends HelloEvents {
         this.connections = this.connections.filter((item) => {
           if (item.user === currentUser && item.socket.readyState === 1) {
             item.socket.dispatch(item.signature, 'offline', null)
-            item.socket.close()
             return false
           }
           else if (item.from === currentUser && item.socket.readyState === 1) {
             item.socket.dispatch(item.signature, 'break', null)
-            item.socket.close()
             return false
           }
           else if (item.to === currentUser && item.socket.readyState === 1) {
             item.socket.dispatch(item.signature, 'break', null)
-            item.socket.close()
             return false
           }
           return true
